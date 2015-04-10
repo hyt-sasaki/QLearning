@@ -66,7 +66,10 @@ public:
     /**
      * @brief Qテーブルの値を初期化するメソッド
      *
+     * @param width 迷路の幅
+     * @param height 迷路の高さ
+     *
      * Qテーブルの値を初期化する.
      */
-    void initQTable();
+    void initQTable(const int width, const int height);
 };

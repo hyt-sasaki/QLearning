@@ -131,4 +131,13 @@ public:
      * エージェントの位置(agentPos)をスタート位置にリセットする.
      */
     void resetAgentPos();
+
+    /**
+     * @brief 迷路のサイズを返すメソッド
+     *
+     * @return 迷路のサイズ(縦幅と横幅)
+     *
+     * 迷路の縦幅および横幅をpair<int, int>型で返す.
+     */
+    pair<int, int> getSize() const;
 };

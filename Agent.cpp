@@ -32,6 +32,13 @@ void Agent::calcQTable(const Reward& reward) {
 
 }
 
-void Agent::initQTable() {
-
+void Agent::initQTable(const int width, const int height) {
+    for (int y = 0; y < height; y++) {
+        vector<vector<double>> q_y;
+        for (int x = 0; x < width; x++) {
+            vector<double> q_a(ACTION_NUM, 0);
+            q_y.push_back(q_a);
+        }
+        this->qTable.push_back(q_y);
+    }
 }

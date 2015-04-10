@@ -147,3 +147,10 @@ void Environment::resetAgentPos() {
         }
     }
 }
+
+pair<int, int> Environment::getSize() const {
+    const int width = maze.at(0).size();
+    const int height = maze.size();
+    return pair<int, int>(width, height);
+}
+

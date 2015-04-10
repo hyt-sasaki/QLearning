@@ -56,20 +56,19 @@ Action Agent::getMaxQAction(const State& s) const {
         }
     }
     switch (actionIdx) {
-        case UP:
-            return Action(UP);
+        case 0:
+            return UP;
             break;
-        case RIGHT:
-            return Action(RIGHT);
+        case 1:
+            return RIGHT;
             break;
-        case DOWN:
-            return Action(DOWN);
+        case 2:
+            return DOWN;
             break;
-        case LEFT:
-            return Action(LEFT);
+        case 3:
+            return LEFT;
             break;
         default:
-            return Action();
             break;
     }
 }

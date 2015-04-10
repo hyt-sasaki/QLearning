@@ -63,4 +63,22 @@ public:
         }
         return true;
     }
+
+    /**
+     * @brief エージェントのx座標を返すgetterメソッド
+     *
+     * @return エージェントのx座標
+     */
+    int getX() const {
+        return this->x;
+    }
+
+    /**
+     * @brief エージェントのy座標を返すgetterメソッド
+     *
+     * @return エージェントのy座標
+     */
+    int getY() const {
+        return this->y;
+    }
 };

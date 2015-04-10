@@ -25,6 +25,16 @@ class Agent {
     /*! @brief Qテーブル */
     vector<vector<vector<double>>> qTable;
     //map<pair<State, Action>, double> qTable;
+    /**
+     * @brief ある状態でQ値が最大になる行動を返すプライベートメソッド
+     *
+     * @param s エージェントの状態
+     *
+     * @return Q値が最大となっている行動
+     *
+     * ある状態でQ値が最大になる行動を返す.
+     */
+    Action getMaxQAction(const State& s) const;
 public:
     /**
      * @brief エージェントクラスのコンストラクタ

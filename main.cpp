@@ -24,6 +24,9 @@ int main(int argc, char const* argv[])
 
     Environment env(ifs);
     Agent agent = Agent();
+    const pair<int, int> mazeSize = env.getSize();
+    agent.initQTable(mazeSize.first, mazeSize.second);
+
     unsigned int episode = 0;
     const unsigned int episodeLimit = 200;
     while (episode < episodeLimit) {

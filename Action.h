@@ -14,7 +14,7 @@
  * 迷路タスクにおける行動の列挙型で上下左右が定義される.
  */
 enum EMazeAction {
-    UP, DOWN, LEFT, RIGHT,
+    UP, RIGHT, DOWN, LEFT, ACTION_NUM,
 };
 
 /**
@@ -26,6 +26,14 @@ class Action {
     /*! @brief 行動を表すメンバ変数 */
     EMazeAction action;
 public:
+    /**
+     * @brief Actionクラスのコンストラクタ
+     *
+     * Actionクラスのデフォルトコンストラクタ.
+     */
+    Action() {
+    }
+
     /**
      * @brief Actionクラスのコンストラクタ
      *

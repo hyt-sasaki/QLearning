@@ -42,3 +42,34 @@ void Agent::initQTable(const int width, const int height) {
         this->qTable.push_back(q_y);
     }
 }
+
+Action Agent::getMaxQAction(const State& s) const {
+    const int x = s.getX();
+    const int y = s.getY();
+    double maxQ = this->qTable[y][x][0];
+    int actionIdx = 0;
+    for (int i = 1; i < ACTION_NUM; i++) {
+        double q = this->qTable[y][x][i];
+        if (q > maxQ) {
+            maxQ = q;
+            actionIdx = i;
+        }
+    }
+    switch (actionIdx) {
+        case UP:
+            return Action(UP);
+            break;
+        case RIGHT:
+            return Action(RIGHT);
+            break;
+        case DOWN:
+            return Action(DOWN);
+            break;
+        case LEFT:
+            return Action(LEFT);
+            break;
+        default:
+            return Action();
+            break;
+    }
+}

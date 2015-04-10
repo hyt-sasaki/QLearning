@@ -25,6 +25,7 @@ class Agent {
     /*! @brief Qテーブル */
     vector<vector<vector<double>>> qTable;
     //map<pair<State, Action>, double> qTable;
+    double epsilon;
     /**
      * @brief ある状態でQ値が最大になる行動を返すプライベートメソッド
      *

@@ -10,21 +10,26 @@
 
 Action Agent::getNextAction() {
     random_device rnd;
-    switch (rnd() % 4) {
-        case 0:
-            return UP;
-            break;
-        case 1:
-            return RIGHT;
-            break;
-        case 2:
-            return DOWN;
-            break;
-        case 3:
-            return LEFT;
-            break;
-        default:
-            break;
+    double r = (double)rand() / (double)RAND_MAX;
+    if (r < this->epsilon) {
+        switch (rnd() % 4) {
+            case 0:
+                return UP;
+                break;
+            case 1:
+                return RIGHT;
+                break;
+            case 2:
+                return DOWN;
+                break;
+            case 3:
+                return LEFT;
+                break;
+            default:
+                break;
+        }
+    } else {
+        return getMaxQAction(this->observation);
     }
 }
 

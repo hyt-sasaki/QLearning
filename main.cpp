@@ -15,7 +15,12 @@ using namespace std;
 
 int main(int argc, char const* argv[])
 {
-    ifstream ifs("./testenv4.txt");
+    if (argc != 2) {
+        cout << "usage : ./main <maze file>" << endl;
+        return 1;
+    }
+    const string filename = argv[1];
+    ifstream ifs(filename);
     if (ifs.fail()) {
         cout << "ファイル読み込みに失敗しました" << endl;
         return 1;

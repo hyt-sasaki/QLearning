@@ -50,7 +50,13 @@ void Environment::printEnv() const {
             if ((int)x == this->agentPos.first && (int)y == this->agentPos.second) {
                 cout << (char)AGENT << " "; //エージェントの表示
             } else {
-                cout << (char)this->maze[y][x] << " ";
+//                cout << (char)this->maze[y][x] << " ";
+                if (this->maze[y][x] == PASSAGE) {
+                    cout << " ";
+                } else {
+                    cout << (char)this->maze[y][x];
+                }
+                cout << " ";
             }
         }
         cout << endl;

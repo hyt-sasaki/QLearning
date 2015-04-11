@@ -13,6 +13,7 @@ vector<vector<MazeObject>> Environment::createMaze(ifstream& ifs) const {
     vector<vector<MazeObject>> ylist;
     while (getline(ifs, str)) {
         vector<MazeObject> xlist;
+        xlist.reserve(str.length());
         for (unsigned int i = 0; i < str.length(); i++) {
             MazeObject mo;
             bool inputCheck = true;

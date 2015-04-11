@@ -36,9 +36,11 @@ int main(int argc, char const* argv[])
     for (unsigned int i = 1; i <= split; i++) {
         epsilon[i - 1] = 1.0 * (double)(split - i) / (double)split;
     }
+    const double alpha = 0.1;
+    const double gamma = 0.9;
 
     Environment env(ifs);
-    Agent agent = Agent();
+    Agent agent = Agent(alpha, gamma);
     agent.setEpsilon(epsilon[0]);
     const pair<int, int> mazeSize = env.getSize();
     agent.initQTable(mazeSize.first, mazeSize.second);

@@ -8,5 +8,5 @@
 #include "Reward.h"
 
 const int Reward::GOAL_VALUE = 100;
-const int Reward::OBS_VALUE = -1;
-const int Reward::FREE_VALUE = 0;
+const int Reward::OBS_VALUE = -5;
+const int Reward::FREE_VALUE = -1;

@@ -83,4 +83,9 @@ public:
      * Qテーブルの値を初期化する.
      */
     void initQTable(const int width, const int height);
+
+    /**
+     * @brief Qテーブルの値を表示する
+     */
+    void printQTable() const;
 };

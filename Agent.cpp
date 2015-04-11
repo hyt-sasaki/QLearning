@@ -7,6 +7,7 @@
  */
 #include "Agent.h"
 #include <random>
+#include <iostream>
 
 Action Agent::getNextAction() {
     random_device rnd;
@@ -75,5 +76,16 @@ Action Agent::getMaxQAction(const State& s) const {
             break;
         default:
             break;
+    }
+}
+
+void Agent::printQTable() const {
+    for (unsigned int y = 0; y < this->qTable.size(); y++) {
+        for (unsigned int x = 0; x < this->qTable[0].size(); x++) {
+            for (int a = 0; a < ACTION_NUM; a++) {
+                cout << a << " : " << this->qTable[y][x][a] << ", ";
+            }
+            cout << endl;
+        }
     }
 }

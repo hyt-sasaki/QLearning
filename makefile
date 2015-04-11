@@ -1,17 +1,6 @@
 CXX = g++
 TARGET = main
-#TARGET = main_p
-#TARGET = main_e
-#CXXFLAGS = -Wall -O2 -std=c++11 -I include -MMD -MP
-#CXXFLAGS = -O2 -std=c++11 -I include -MMD -MP
 CXXFLAGS = -O2 -std=c++11 -I . -MMD -MP
-#OPENCVLIB = `pkg-config --libs opencv`
-#BOOSTLIB = -lboost_serialization -lboost_program_options -lboost_filesystem -lboost_system
-#OPENCVCFLG = `pkg-config --cflags opencv`
-#CXXFLAGS += $(OPENCVCFLG)
-#LDFLAGS += $(OPENCVLIB)
-#LDFLAGS += $(BOOSTLIB)
-#INCLUDES = src src/IO src/PIRF src/PIRF/SimilarityCalc src/Setting
 INCLUDES = .
 EXCLUDES =
 SRCS := $(wildcard $(addsuffix /*.cpp, $(INCLUDES)))

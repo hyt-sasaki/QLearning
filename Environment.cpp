@@ -128,7 +128,7 @@ Reward Environment::getAgentReward(const Action& a) const {
     if (!isMovable(nextPos)) {  //移動不可の場合
         reward = Reward(Reward::OBS_VALUE);
     } else {
-        if (this->maze[nextPos.first][nextPos.second] == GOAL) {
+        if (this->maze[nextPos.second][nextPos.first] == GOAL) {
             reward = Reward(Reward::GOAL_VALUE);
         } else {
             reward = Reward(Reward::FREE_VALUE);

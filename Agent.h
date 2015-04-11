@@ -92,10 +92,11 @@ public:
      * @brief Qテーブルの値を更新するメソッド
      *
      * @param reward 環境から得られる報酬値
+     * @param action エージェントが行った行動
      *
-     * 環境から得られる報酬と現在のQテーブルの値を元に,Qテーブル(メンバ変数qTable)の値を更新する.
+     * 環境から得られる報酬とエージェントの行動,現在のQテーブルの値を元に,Qテーブル(メンバ変数qTable)の値を更新する.
      */
-    void calcQTable(const Reward& reward);
+    void calcQTable(const Action& action, const Reward& reward, const State& state);
 
     /**
      * @brief Qテーブルの値を初期化するメソッド

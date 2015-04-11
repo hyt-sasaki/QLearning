@@ -34,8 +34,13 @@ Action Agent::getNextAction() {
     }
 }
 
-void Agent::calcQTable(const Reward& reward) {
-
+void Agent::calcQTable(const Action& action, const Reward& reward, const State& state) {
+    const int x = this->observation.getX();
+    const int y = this->observation.getY();
+    double q1 = (1 - this->alpha) * this->qTable[y][x][action];
+    double maxQ = getMaxQ(state);
+    double q2 = this->alpha * ((double)reward.getReward() + this->gamma * maxQ);
+    this->qTable[y][x][action] = q1 + q2;
 }
 
 void Agent::initQTable(const int width, const int height) {
@@ -77,6 +82,21 @@ Action Agent::getMaxQAction(const State& s) const {
         default:
             break;
     }
+}
+
+double Agent::getMaxQ(const State& s) const {
+    const int x = s.getX();
+    const int y = s.getY();
+    double maxQ = this->qTable[y][x][0];
+
+    for (int i = 1; i < ACTION_NUM; i++) {
+        double q = this->qTable[y][x][i];
+        if (q > maxQ) {
+            maxQ = q;
+        }
+    }
+
+    return maxQ;
 }
 
 void Agent::printQTable() const {

@@ -35,13 +35,15 @@ int main(int argc, char const* argv[])
         cout << "episode" << episode << endl;
         cout << "************************" << endl;
         Reward reward;
-        while (reward.getReward() != Reward::GOAL_VALUE) {
-            State state = env.getAgentState();
-            agent.observe(state);
+        State state0 = env.getAgentState();
+        agent.observe(state0);
+        while (reward.getReward() != Reward::GOAL_VALUE && step < stepLimit) {
             Action action = agent.getNextAction();
             reward = env.getAgentReward(action);
             env.transNextEnv(action);
-            agent.calcQTable(reward);
+            State state = env.getAgentState();
+            agent.calcQTable(action, reward, state);
+            agent.observe(state);
             step++;
         }
         cout << "ゴールまでのステップ数 : " << step << endl;

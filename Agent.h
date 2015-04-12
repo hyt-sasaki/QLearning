@@ -25,9 +25,18 @@ class Agent {
     /*! @brief Qテーブル */
     vector<vector<vector<double>>> qTable;
     //map<pair<State, Action>, double> qTable;
+    /*! @brief 学習率α */
     double alpha;
-    double epsilon;
+    /*! @brief 割引率γ */
     double gamma;
+    /*! @brief ε-greedyのε */
+    double epsilon;
+    /*! @brief εのリスト*/
+    vector<double> epsilonList;
+    /*! @brief 学習するエピソード数の最大値 */
+    const unsigned int episodeLimit;
+    /*! @brief epsilonListの要素数 */
+    static const unsigned int SPLIT;
     /**
      * @brief ある状態でQ値が最大になる行動を返すプライベートメソッド
      *
@@ -54,7 +63,12 @@ public:
      *
      * エージェントクラスのデフォルトコンストラクタ.
      */
-    Agent() : alpha(0.1), gamma(0.9) {
+    Agent() : alpha(0.1), gamma(0.9) , episodeLimit(10000) {
+        const unsigned int split = 10;
+        for (unsigned int i = 1; i <= split; i++) {
+            epsilonList.push_back(1.0 * (double)(split - i) / (double)split);
+        }
+        this->epsilon = epsilonList.at(0);
     }
 
     /**
@@ -65,7 +79,12 @@ public:
      *
      * Agentクラスのコンストラクタであり,メンバ変数alpha, gammaの値を初期化する.
      */
-    Agent(const double _alpha, const double _gamma) : alpha(_alpha), gamma(_gamma) {
+    Agent(const double _alpha, const double _gamma, const unsigned int _episodeLimit) : alpha(_alpha), gamma(_gamma) , episodeLimit(_episodeLimit) {
+        const unsigned int split = 10;
+        for (unsigned int i = 1; i <= split; i++) {
+            epsilonList.push_back(1.0 * (double)(split - i) / (double)split);
+        }
+        this->epsilon = epsilonList.at(0);
     }
 
     /**
@@ -109,34 +128,16 @@ public:
     void initQTable(const int width, const int height);
 
     /**
-     * @brief メンバ変数epsilonのsetterメソッド
-     *
-     * @param e 設定するepsilonの値
-     */
-    void setEpsilon(const double e) {
-        this->epsilon = e;
-    }
-
-    /**
-     * @brief メンバ変数alphaのsetterメソッド
-     *
-     * @param a 設定するalphaの値
-     */
-    void setAlpha(const double a) {
-        this->alpha = a;
-    }
-
-    /**
-     * @brief メンバ変数gammaのsetterメソッド
-     *
-     * @param g 設定するgammaの値
-     */
-    void setGamma(const double g) {
-        this->gamma = g;
-    }
-
-    /**
      * @brief Qテーブルの値を表示する
      */
     void printQTable() const;
+
+    /**
+     * @brief エピソード数に応じて学習パラメータを変更するメソッド
+     *
+     * @param episodes 学習のエピソード数
+     *
+     * エピソード数に応じてメンバ変数epsilonなどの学習パラメータを調整する.
+     */
+    void transParameters(const int episodes);
 };

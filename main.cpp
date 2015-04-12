@@ -29,19 +29,12 @@ int main(int argc, char const* argv[])
 
     unsigned int episode = 0;
     const unsigned int episodeLimit = 10000;
-    const unsigned int split = 10;
-    const unsigned int episodeSplit = episodeLimit / split;
     const unsigned int stepLimit = 10000;
-    double epsilon[split];
-    for (unsigned int i = 1; i <= split; i++) {
-        epsilon[i - 1] = 1.0 * (double)(split - i) / (double)split;
-    }
     const double alpha = 0.1;
     const double gamma = 0.9;
 
     Environment env(ifs);
-    Agent agent = Agent(alpha, gamma);
-    agent.setEpsilon(epsilon[0]);
+    Agent agent = Agent(alpha, gamma, episodeLimit);
     const pair<int, int> mazeSize = env.getSize();
     agent.initQTable(mazeSize.first, mazeSize.second);
 
@@ -74,9 +67,7 @@ int main(int argc, char const* argv[])
         ofs << episode << ", " << step << endl;
         env.resetAgentPos();
         episode++;
-        if (episode % episodeSplit == 0) {
-            agent.setEpsilon(epsilon[episode / episodeSplit]);
-        }
+        agent.transParameters(episode);
     }
     return 0;
 }

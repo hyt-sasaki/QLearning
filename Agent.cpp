@@ -79,3 +79,12 @@ void Agent::printQTable() const {
         }
     }
 }
+
+void Agent::transParameters(const int episodes) {
+    const unsigned int episodeSplit = this->episodeLimit / Agent::SPLIT;
+    if (episodes % episodeSplit == 0 && episodes / episodeSplit < Agent::SPLIT) {
+        this->epsilon = this->epsilonList.at(episodes / episodeSplit);
+    }
+}
+
+const unsigned int Agent::SPLIT = 10;

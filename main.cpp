@@ -34,7 +34,7 @@ int main(int argc, char const* argv[])
     const double gamma = 0.9;
 
     Environment env(ifs);
-    Agent agent = Agent(alpha, gamma, episodeLimit);
+    Agent agent = Agent(alpha, gamma);
     const pair<int, int> mazeSize = env.getSize();
     agent.initQTable(mazeSize.first, mazeSize.second);
 

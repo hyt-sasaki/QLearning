@@ -1,4 +1,5 @@
 /**
+
  * @file Environment.cpp
  * @brief Environmentクラスのソースファイル
  * @author Hayato Sasaki
@@ -17,22 +18,10 @@ vector<vector<MazeObject>> Environment::createMaze(ifstream& ifs) const {
         for (unsigned int i = 0; i < str.length(); i++) {
             MazeObject mo;
             bool inputCheck = true;
-            switch (str[i]) {
-                case 'X':
-                    mo = WALL;
-                    break;
-                case '0':
-                    mo = PASSAGE;
-                    break;
-                case 'S':
-                    mo = START;
-                    break;
-                case 'G':
-                    mo = GOAL;
-                    break;
-                default:
-                    inputCheck = false;
-                    break;
+            try {
+                mo = Environment::MAZE_OBJECT_INPUT_DIC.at(str[i]);
+            } catch (const out_of_range& e) {
+                inputCheck = false;
             }
             if (inputCheck) {
                 xlist.push_back(mo);
@@ -48,15 +37,9 @@ void Environment::printEnv() const {
     for (unsigned int y = 0; y < this->maze.size(); y++) {
         for (unsigned int x = 0; x < this->maze[0].size(); x++) {
             if ((int)x == this->agentPos.first && (int)y == this->agentPos.second) {
-                cout << (char)AGENT << " "; //エージェントの表示
+                cout << Environment::MAZE_OBJECT_OUTPUT_DIC.at(AGENT) << " "; //エージェントの表示
             } else {
-//                cout << (char)this->maze[y][x] << " ";
-                if (this->maze[y][x] == PASSAGE) {
-                    cout << " ";
-                } else {
-                    cout << (char)this->maze[y][x];
-                }
-                cout << " ";
+                cout << Environment::MAZE_OBJECT_OUTPUT_DIC.at(this->maze[y][x]) << " ";
             }
         }
         cout << endl;
@@ -161,3 +144,19 @@ pair<int, int> Environment::getSize() const {
     return pair<int, int>(width, height);
 }
 
+const map<MazeObject, char> Environment::MAZE_OBJECT_OUTPUT_DIC =
+{
+    {WALL, '#'},
+    {PASSAGE, ' '},
+    {START, 'S'},
+    {GOAL, 'G'},
+    {AGENT, '@'},
+};
+
+const map<char, MazeObject> Environment::MAZE_OBJECT_INPUT_DIC =
+{
+    {'X', WALL},
+    {'0', PASSAGE},
+    {'S', START},
+    {'G', GOAL},
+};

@@ -73,28 +73,8 @@ pair<int, int> Environment::getNextPos(const Action& a) const {
     int tmpX;   //移動後のエージェントのx座標
     int tmpY;   //移動後のエージェントのy座標
 
-    switch (a) {
-        case UP:
-            tmpX = x;
-            tmpY = y - 1;
-            break;
-        case DOWN:
-            tmpX = x;
-            tmpY = y + 1;
-            break;
-        case LEFT:
-            tmpX = x - 1;
-            tmpY = y;
-            break;
-        case RIGHT:
-            tmpX = x + 1;
-            tmpY = y;
-            break;
-        default:
-            tmpX = x;
-            tmpY = y;
-            break;
-    }
+    tmpX = x + ACTION_TO_DIRECTION.at(a).first;
+    tmpY = y + ACTION_TO_DIRECTION.at(a).second;
 
     return pair<int, int>(tmpX, tmpY);
 }

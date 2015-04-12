@@ -6,6 +6,7 @@
  * @date 2015-04-08
  */
 #pragma once
+#include <map>
 
 /**
  * @enum Action
@@ -15,4 +16,20 @@
  */
 enum Action {
     UP, RIGHT, DOWN, LEFT, ACTION_NUM,
+};
+
+const std::map<Action, std::pair<int, int>> ACTION_TO_DIRECTION =
+{
+    {UP, std::pair<int, int>(0, -1)},
+    {RIGHT, std::pair<int, int>(1, 0)},
+    {DOWN, std::pair<int, int>(0, 1)},
+    {LEFT, std::pair<int, int>(-1, 0)},
+};
+
+const std::map<int, Action> INTEGER_TO_ACTION =
+{
+    {0, UP},
+    {1, RIGHT},
+    {2, DOWN},
+    {3, LEFT},
 };

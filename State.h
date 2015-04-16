@@ -34,37 +34,6 @@ public:
     }
 
     /**
-     * @brief ==演算子のオーバーロード
-     *
-     * @param s 比較を行うStateオブジェクト
-     *
-     * @return thisオブジェクトとオブジェクトsが等しいかどうかのbool値
-     *
-     * ==演算子のオーバーロードで,thisオブジェクトとオブジェクトsの比較を行う.
-     */
-    bool operator==(const State& s) const {
-        if (this->x == s.x && this->y == s.y) {
-            return true;
-        }
-        return false;
-    }
-    /**
-     * @brief !=演算子のオーバーロード
-     *
-     * @param s 比較を行うStateオブジェクト
-     *
-     * @return thisオブジェクトとオブジェクトsが等しくないかどうかのbool値
-     *
-     * !=演算子のオーバーロードで,thisオブジェクトとオブジェクトsの比較を行う.
-     */
-    bool operator!=(const State& s) const {
-        if (this->x == s.x && this->y == s.y) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * @brief エージェントのx座標を返すgetterメソッド
      *
      * @return エージェントのx座標

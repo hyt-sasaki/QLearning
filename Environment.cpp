@@ -83,7 +83,7 @@ pair<int, int> Environment::getNextPos(const Action& a) const {
     int tmpX;   //移動後のエージェントのx座標
     int tmpY;   //移動後のエージェントのy座標
 
-    switch (a.getAction()) {
+    switch (a) {
         case UP:
             tmpX = x;
             tmpY = y - 1;

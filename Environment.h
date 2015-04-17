@@ -14,6 +14,7 @@
 #include <istream>
 #include <fstream>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ using namespace std;
  * @brief 迷路の各マス目の属性を表す列挙型
  */
 enum MazeObject {
-    WALL = 'X', PASSAGE = '0', START = 'S', GOAL = 'G', AGENT = 'A',
+    WALL, PASSAGE, START, GOAL, AGENT,
 };
 
 /**
@@ -69,6 +70,9 @@ class Environment {
      * この際,その座標に移動可能かは判定しない.
      */
     pair<int, int> getNextPos(const Action& a) const;
+
+    static const map<MazeObject, char> MAZE_OBJECT_OUTPUT_DIC;
+    static const map<char, MazeObject> MAZE_OBJECT_INPUT_DIC;
 public:
     /**
      * @brief Environmentクラスのコンストラクタ

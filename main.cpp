@@ -62,6 +62,7 @@ int main(int argc, char const* argv[])
         if (episode == episodeLimit) {
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
             env.printEnv();
+            agent.printQTable();
         }
         cout << "ゴールまでのステップ数 : " << step << endl;
         ofs << episode << ", " << step << endl;

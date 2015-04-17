@@ -7,6 +7,7 @@
  */
 #pragma once
 #include <map>
+#include <string>
 
 /**
  * @enum Action
@@ -32,4 +33,12 @@ const std::map<int, Action> INTEGER_TO_ACTION =
     {1, RIGHT},
     {2, DOWN},
     {3, LEFT},
+};
+
+const std::map<Action, std::string> ACTION_TO_STRING =
+{
+    {UP, "UP"},
+    {RIGHT, "RIGHT"},
+    {DOWN, "DOWN"},
+    {LEFT, "LEFT"},
 };

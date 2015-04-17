@@ -72,8 +72,10 @@ double Agent::getMaxQ(const State& s) const {
 void Agent::printQTable() const {
     for (unsigned int y = 0; y < this->qTable.size(); y++) {
         for (unsigned int x = 0; x < this->qTable[0].size(); x++) {
+            cout << "(" << x << ", " << y << ")\t";
             for (int a = 0; a < ACTION_NUM; a++) {
-                cout << a << " : " << this->qTable[y][x][a] << ", ";
+                const string action_str = ACTION_TO_STRING.at(INTEGER_TO_ACTION.at(a));
+                cout << action_str << " : " << this->qTable[y][x][a] << ", ";
             }
             cout << endl;
         }

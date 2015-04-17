@@ -118,12 +118,6 @@ void Environment::resetAgentPos() {
     }
 }
 
-pair<int, int> Environment::getSize() const {
-    const int width = maze.at(0).size();
-    const int height = maze.size();
-    return pair<int, int>(width, height);
-}
-
 const map<MazeObject, char> Environment::MAZE_OBJECT_OUTPUT_DIC =
 {
     {WALL, '#'},

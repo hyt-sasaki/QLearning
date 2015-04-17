@@ -68,9 +68,6 @@ int main(int argc, char const* argv[])
         ofs << episode << ", " << step << endl;
         env.resetAgentPos();
         episode++;
-        if (episode % episodeSplit == 0) {
-            agent.setEpsilon(epsilon[episode / episodeSplit]);
-        }
     }
     return 0;
 }

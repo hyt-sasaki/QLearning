@@ -25,13 +25,27 @@ class Agent {
     /*! @brief Qテーブル */
     vector<vector<vector<double>>> qTable;
     //map<pair<State, Action>, double> qTable;
+    double alpha;
+    double epsilon;
+    double gamma;
 public:
     /**
      * @brief エージェントクラスのコンストラクタ
      *
-     * エージェントクラスのコンストラクタ.
+     * エージェントクラスのデフォルトコンストラクタ.
      */
-    Agent() {
+    Agent() : alpha(0.1), gamma(0.9) {
+    }
+
+    /**
+     * @brief Agentクラスのコンストラクタ
+     *
+     * @param _alpha メンバ変数alphaの初期化値
+     * @param _gamma メンバ変数gammaの初期化値
+     *
+     * Agentクラスのコンストラクタであり,メンバ変数alpha, gammaの値を初期化する.
+     */
+    Agent(const double _alpha, const double _gamma) : alpha(_alpha), gamma(_gamma) {
     }
 
     /**

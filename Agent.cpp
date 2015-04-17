@@ -10,22 +10,7 @@
 
 Action Agent::getNextAction() {
     random_device rnd;
-    switch (rnd() % 4) {
-        case 0:
-            return UP;
-            break;
-        case 1:
-            return RIGHT;
-            break;
-        case 2:
-            return DOWN;
-            break;
-        case 3:
-            return LEFT;
-            break;
-        default:
-            break;
-    }
+    return INTEGER_TO_ACTION.at(rnd() % INTEGER_TO_ACTION.size());
 }
 
 void Agent::calcQTable(const Reward& reward) {
